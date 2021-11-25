@@ -1,0 +1,131 @@
+<div class="gallerycontainer" *ngIf="isugselected > 0">
+		<gallery id="productgroup-images" fluid [items]="galleryItems" (itemClick)="galleryImageClick()" (indexChange)="galleryImageChange($event)"></gallery>
+</div>
+
+<ngx-loading [show]="loadingeffect" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+
+<div class="padwrapper">
+
+	<div class="contentwrapper">
+
+		<div class="close-gallery-btn" *ngIf="isugselected > 0">
+			<button class="close-gallery-buton" type="button" (click)="galleryCloseClick()"><i class="fas fa-times-circle"></i></button>
+		</div>
+
+	    <div class="imagecontainer" >
+			<ng-container *ngFor="let grp of productGroups">
+				<div (click)="ugGalleryStart( grp.ug )" class="img {{ ((selectedDetail['ug'] && (selectedDetail['ug'].includes( grp.ug ) || selectedDetail['ug'].includes(10))) || !selectedDetail['ug']) ? 'active' : 'passive' }}" ><img [src]="grp.img"></div>
+			</ng-container>
+		</div>
+
+	    <div class="informationbar" *ngIf="buttonViewPage">
+			
+	        <div class="informationtext" id="resultText">Hoşgeldiniz <strong>{{username}}</strong></div>
+
+	        <form *ngIf="!isuserlogin" class="informationbuttondiv forlogin" [formGroup]="userForm">
+		        <input type="text" formControlName="useremail" class="inputuser">
+		        <input type="password" formControlName="userpassword" class="inputuser">
+		        <button type="submit" (click)="LoginProcess(userForm.value)" ><i class="fas fa-sign-in-alt"></i></button>
+			</form>
+
+			<div *ngIf="isuserlogin && !selectedDetail['nm']" class="informationbuttondiv forcontrol">
+		        <div id="logoutbutton" (click)="LogoutProcessQuestion()"><i class="fas fa-sign-out-alt"></i></div>
+		        <div id="updatebutton" (click)="syncAllObjectsQuestion()"><i class="fas fa-sync-alt"></i></div>
+				<div id="startbutton" (click)="startProgram()"><i class="fas fa-stethoscope"></i> &nbsp; <i class="fas fa-play"></i></div>
+				<div *ngIf="tempAllSessionData.length>0" id="tocloudbutton" (click)="toCloudDataQuestion()">{{this.tempAllSessionData.length }} &nbsp; <i class="fas fa-cloud-upload-alt"></i></div>
+	        </div>
+			
+			
+
+			<div *ngIf="isuserlogin && selectedDetail['nm']" class="informationbuttondiv forinfoview">
+
+				<div *ngIf="searchtype == 1" class="infoview">
+					<div class="infoviewSelect1"> <i class="fa fa-user-md"></i> {{ selectedDetail['nm'] }} / <div class="infoviewSelect2"><i class="fas fa-map-marker-alt"></i> {{ selectedDetail['sn'] }} </div></div> 
+					<div class="infoviewSelect3"><i class="fas fa-hospital"></i> {{ selectedDetail['hn'] }}</div>
+					
+				</div>
+
+				<div *ngIf="searchtype == 2" class="infoview">
+					<div class="infoviewSelect1"><i class="far fa-clinic-medical"></i> {{ selectedDetail['nm'] }} / <div class="infoviewSelect2"><i class="fas fa-map-marker-alt"></i> {{ selectedDetail['sn'] }}</div></div>
+					<div class="infoviewSelect3"><i class="fas fa-user"></i> {{ selectedDetail['fc'] }}</div>
+					
+				</div>
+
+				<div id="cancelbutton" class="cancelbutton" (click)="cancelProgramQuestion()"><i class="fas fa-times"></i></div>
+
+				<div id="finishbutton" class="finishbutton" (click)="stopProgramQuestion()"><i *ngIf="searchtype == 1" class="fa fa-user-md"></i><i *ngIf="searchtype == 2" class="fa fa-medkit"></i> &nbsp; <i class="fas fa-stop"></i></div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+<ngx-smart-modal #toCloudDataModal identifier="toCloudDataModal">
+	<h1>Veri Gönderme</h1>
+	<p>Bu işlem sırasında internet bağlantınızın düzgün olduğundan emin olunuz.</p>
+	<button class="yesbutton" (click)="toCloudData()">Gönder</button>
+	<button class="nobutton" (click)="toCloudDataModal.close()">Vazgeç</button>
+</ngx-smart-modal>
+
+<ngx-smart-modal #syncAllObjectModal identifier="syncAllObjectModal">
+	<h1>Veri Güncelleme</h1>
+	<p>Veri güncelleme işlemi yapılsın mı? Bu işlem internet kullanacaktır.</p>
+	<button class="yesbutton" (click)="syncAllObjects()">Devam Et</button>
+	<button class="nobutton" (click)="syncAllObjectModal.close()">Vazgeç</button>
+</ngx-smart-modal>
+
+<ngx-smart-modal #stopProgramModal identifier="stopProgramModal">
+	<h1>Sunumu Tamamla</h1>
+	<p>Sunum Tamamlansın mı?</p>
+	<button class="yesbutton" (click)="stopProgram()">Evet</button>
+	<button class="nobutton" (click)="stopProgramModal.close()">Hayır</button>
+</ngx-smart-modal>
+
+<ngx-smart-modal #cancelProgramModal identifier="cancelProgramModal">
+	<h1>İptal</h1>
+	<p>Aktif Sunum İptal Edilsin mi?</p>
+	<button class="yesbutton" (click)="cancelProgram()">İptal Et</button>
+	<button class="nobutton" (click)="cancelProgramModal.close()">Vazgeç</button>
+</ngx-smart-modal>
+
+<ngx-smart-modal #LogoutProcessModal identifier="LogoutProcessModal">
+	<h1>Çıkış</h1>
+	<p>Çıkış yapmak istediğinizden emin misiniz?</p>
+	<button class="yesbutton" (click)="LogoutProcess()">Çıkış Yap</button>
+	<button class="nobutton" (click)="LogoutProcessModal.close()">Vazgeç</button>
+</ngx-smart-modal>
+
+<div class="start-program" *ngIf="searchViewPage">
+	
+
+	<div class="btn" >
+		<div class="doctor-btn">
+			<button class="doctor-buton" type="button" (click)="updateFilterSource(1)">Doktorlar<i class="fa fa-user-md"></i></button>
+		</div>
+		<div class="eczane-btn">
+			<button class="eczane-buton" type="button" (click)="updateFilterSource(2)"><i class="fa fa-medkit"></i>Eczaneler</button>
+		</div>
+		<div class="close-program-btn">
+			<button class="close-program-buton" type="button" (click)="closeSearch()"><i class="fas fa-times-circle"></i></button>
+		</div>
+	</div>
+	
+	<div *ngIf="searchtype > 0" class="search"> 
+		<input type="text" placeholder="Ara.." autofocus class="search-input" id="searchinputid" (keyup)='updateFilter($event)'>
+		<div *ngIf="tabledata.length" class="custom-datatable">
+			<ngx-datatable
+				#table
+				class="bootstrap"
+				[rows]="tabledata"
+				[columns]="columns"
+				[columnMode]="'force'"
+				[headerHeight]="50"
+				[footerHeight]="50"
+				[rowHeight]="'auto'"
+				[limit]="6"
+				(activate)="onActivateTable($event)"
+			>	
+			</ngx-datatable>
+		</div>
+	</div>
+</div>

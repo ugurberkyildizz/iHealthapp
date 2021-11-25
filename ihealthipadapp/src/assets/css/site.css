@@ -1,0 +1,124 @@
+html,body{ overflow: hidden; max-height: 100%; min-height: 100%; width:100%; height:100%; margin:0; padding:0; background:#e3e3e3; text-align: center; -webkit-overflow-scrolling: touch;     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;}
+
+body *{  box-sizing:border-box; font:normal 14px Arial; }
+
+.padwrapper{ display:inline-block; width:100%; height:100%; max-width:1112px; max-height:834px; border-radius: 10px; text-align: left; background:#fff; padding:10px; }
+
+.padwrapper .contentwrapper{ display:inline-block; width:100%; height:100%; position: relative; }
+
+.imagecontainer{ display:inline-block; width:100%; height:90%; padding:0; background:#fdfdfd; overflow: hidden; overflow-y: auto;  }
+.imagecontainer div.img{ display:inline-block; border-bottom:5px solid #069; float:left; width:calc(33.3% - 12px); margin:6px; height:calc(50% - 12px); text-align:center; border-radius:8px; box-shadow: 0 3px 4px #999; overflow: hidden;}
+.imagecontainer div.img img{ width:100%; height:100%; float:left;  }
+.imagecontainer div.img.active{}
+.imagecontainer div.img.passive{ border-color:#ccc !important }
+.imagecontainer div.img.passive img{ opacity:.4; }
+
+.informationbar{ height:5%; width:100%; float:left; padding:10px 6px; }
+.informationbar .informationtext{ width:calc(100% - 550px); float:left; padding:25px 6px; color:#666; font-size:16px; }
+.informationbar .informationtext strong{ font-weight: bold; font-size:16px;}
+.informationbar .informationbuttondiv{ width:550px; float:left; padding:10px 0; text-align:right;}
+.informationbuttondiv .inputuser{ border:1px solid #aaa; float: left; border-radius: 8px;  box-shadow: 0 3px 4px #999; transition:.1s all; width:39%; margin-right: 4%; padding:10px 10px; outline: none;}
+.informationbuttondiv button{ padding:10px 0 10px 0; float: left; width: 14%; background:#469; border:1px solid #069; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+.informationbuttondiv .fas, .informationbuttondiv  .fab, .informationbuttondiv  .far, .informationbuttondiv  .fa{  font-size: 16px !important; }
+
+.informationtext .startdownload{ font-size:26px !important; color:#528ce3; text-shadow: 0 1px 3px #999; line-height: 11px;}
+
+.informationbar #tocloudbutton{ padding:13px 8px 13px 8px; width:12%; margin-right: 4%; display: inline-block; float: right; background:#1158ca; border:1px solid rgb(127, 147, 180); color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #0a367c; }
+
+.informationbar #logoutbutton{ padding:13px 0 13px 0; width:10%; margin-left: 4%; display: inline-block; float: right; background:#a7b4c9; border:1px solid #a7b4c9; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+
+.informationbar #updatebutton{ padding:13px 0 13px 0; width:20%; margin-left: 4%; display: inline-block; float: right; background:#e29f3a; border:1px solid #e29f3a; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+
+.informationbar #startbutton{ padding:13px 0 13px 0; width:25%; display: inline-block; float: right; background:#52b21f; border:1px solid #52b21f; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+
+.informationbar .infoview { padding:2px 0 0 0; width:56%; display: inline-block; text-align: right;/*   float: left; background: rgba(0,0,0,0.8); border-radius:8px; transition:.1s all; cursor:pointer; box-shadow: 0 3px 4px #999;  */}
+.informationbar .infoview .infoviewSelect1 { display: inline-block; font-weight: bolder; color: #333;} 
+.informationbar .infoview .infoviewSelect2 { display: inline-block; font-weight: bold; color: #555; margin-left:10px; }
+.informationbar .infoview .infoviewSelect3 { margin-top: 5px; font-weight: normal; color: #999;}
+
+.informationbar #cancelbutton{ padding:13px 0 13px 0; margin-left: 4%; width:10%; display: inline-block; float: right; background:#a75959; border:1px solid #994e4e; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+
+.informationbar #finishbutton{ padding:13px 0 13px 0; margin-left: 4%; width:25%; display: inline-block; float: right; background:#369; border:1px solid #069; color:#fff;text-align: center; border-radius:8px; transition:.1s all; cursor:pointer;  box-shadow: 0 3px 4px #999; }
+
+.gallerycontainer{ position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
+#productgroup-images{ height: 100%; }
+
+.start-program {position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5);}	
+
+.start-program .btn i.fa{ font-size:30px !important; color:#ddd; }
+.start-program .btn {display: flex; flex-direction: row; justify-content: center; }
+
+.start-program .btn .doctor-btn i{ margin-left:10px; }
+.start-program .btn .doctor-btn { margin-top: 50px; margin-right: 10px;}
+.start-program .btn .doctor-btn .doctor-buton { border-radius: 10px;  background: rgba(0,0,0,0.8); border: none; color: #bbb; font-size: 30px; padding: 10px 25px; }
+
+.start-program .btn .eczane-btn i{ margin-right:10px; }
+.start-program .btn .eczane-btn { margin-top: 50px; margin-left: 10px;}
+.start-program .btn .eczane-btn .eczane-buton { border-radius: 10px; background: rgba(0,0,0,0.8); border: none; color:#bbb; font-size: 30px; padding: 10px 25px;}
+.start-program .btn .eczane-btn .eczane-buton i{ font-size: 20px;}
+.start-program .btn .close-program-btn .close-program-buton {  margin-left: 4px; margin-top: 52px; background: rgba(73, 9, 9, 0.8); color: #bbb; border: none; font-size: 30px; border-radius: 10px; padding: 10px 25px;}
+.start-program .btn .close-program-btn .close-program-buton i{ font-size: 28.5px; color: #aaa;}
+
+.start-program .search { margin-left: calc(50% - 425px); margin-top: 30px; width: 850px; margin-bottom: 25px; }
+.start-program .search { overflow: hidden; height: 525px; border: 0px; }
+.start-program .search .search-input { padding-left: 20px; border-radius: 5px; border: 0px; background: rgba(0,0,0,0.8); color: #fff; height: 50px; font-size: 20px; width: 850px;}
+::placeholder {color: #bbb;}
+
+
+.close-gallery-btn .close-gallery-buton {position: absolute; margin-left: calc(100% - 90px); z-index: 999; background: rgba(73, 9, 9, 0.8); margin-top: 10px; border: none; font-size: 15px; border-radius: 10px; padding: 15px 30px;}
+.close-gallery-btn .close-gallery-buton i{ font-size: 20px; color: #aaa;}
+
+
+@media screen and (max-width:1112px) {
+
+	.padwrapper{width:100%; height: 100%; margin-top: 0; border-radius: 0; }
+
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+
+	.padwrapper{width:100%; height: 100%; margin-top: 0; border-radius: 0;  }
+	
+}
+
+@media only screen and (orientation: portrait) { /* w < h */
+
+	.imagecontainer div.img{ width:50%; height:33.3%; }
+	.imagecontainer{ height:94%; }
+	.informationbar{ height:6%; }
+
+}
+
+@media only screen and (orientation: landscape) { /* w > h */
+
+
+}
+
+
+@media only screen and (device-width: 768px) {
+  /* For general iPad layouts */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+  /* For landscape layouts only */
+}
+/* @import '~@swimlane/ngx-datatable/index.css';
+@import '~@swimlane/ngx-datatable/themes/material.scss';
+@import '~@swimlane/ngx-datatable/assets/icons.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "~ngx-smart-modal/ngx-smart-modal";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+ */
+/*  @import "~ngx-smart-modal/ngx-smart-modal.css"; */
+
+
+ @import '~@swimlane/ngx-datatable/index.css';
